@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :tweeter do
-    handle "MyString"
+    handle "launchacademy"
   end
 end
