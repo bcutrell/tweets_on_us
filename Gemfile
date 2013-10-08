@@ -61,3 +61,6 @@ gem "twitter", "~> 4.8.1"
 gem "t", "~> 1.7.2"
 gem 'omniauth-twitter'
 
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                              :github => 'anjlab/bootstrap-rails'
+
