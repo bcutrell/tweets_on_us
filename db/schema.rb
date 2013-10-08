@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20131008175737) do
   enable_extension "plpgsql"
 
   create_table "tweeters", force: true do |t|
-    t.string   "handle"
+    t.string   "handle",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
