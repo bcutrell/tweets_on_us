@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20131008175737) do
     t.string   "oauth_secret"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "role"
+    t.string   "role",         default: "user", null: false
   end
 
 end

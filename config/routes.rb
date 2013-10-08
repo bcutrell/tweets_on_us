@@ -13,6 +13,7 @@ TweetsOnUs::Application.routes.draw do
     get 'signout', to: 'sessions#destroy', as: 'signout'
     root 'welcome#index'
 
+    get 'welcome/admin'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
