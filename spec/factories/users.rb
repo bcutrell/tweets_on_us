@@ -7,5 +7,12 @@ FactoryGirl.define do
     name "Samwise"
     oauth_token "umad"
     oauth_secret "bro?"
+
+    trait :admin do
+      role "admin"
+    end
+
+    factory :administrator,
+      traits: [:admin]
   end
 end
