@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :user do
-    provider "MyString"
-    uid "MyString"
-    name "MyString"
-    oauth_token "MyString"
-    oauth_secret "MyString"
+    provider "twitter"
+    uid "12345"
+    name "Samwise"
+    oauth_token "umad"
+    oauth_secret "bro?"
   end
 end
