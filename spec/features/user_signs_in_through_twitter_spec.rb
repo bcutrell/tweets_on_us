@@ -10,23 +10,15 @@ So that I can provide authentication to the API
 # * I must have a twitter account
 
   scenario 'I sign in successfully' do 
-    visit root_path
-    mock_auth_hash
-
-    click_on 'Sign in with Twitter'
-
-    page.should have_content("mockuser") 
-    page.should have_css('img', :src => 'mock_user_thumbnail_url') 
+    login_with_oauth
+    
     page.should have_content("Sign out")
   end 
 
   scenario 'I fail to sign in' do 
-   OmniAuth.config.mock_auth[:twitter] = :invalid_credentials
-      visit '/'
-
-      click_on "Sign in with Twitter"
+      login_with_oauth(:invalid)  
       
-      page.should have_content('Authentication failed.')
+      page.should have_content('Authentication failed, please try again.')
   end
 
 
