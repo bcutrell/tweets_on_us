@@ -56,4 +56,7 @@ group :test, :development do
   gem 'valid_attribute'
 end
  
+gem "twitter", "~> 4.8.1"
+gem "t", "~> 1.7.2"
+gem 'omniauth-twitter'
 
