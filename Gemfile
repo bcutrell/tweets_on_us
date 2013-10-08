@@ -54,6 +54,10 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'valid_attribute'
+  gem 'pry-rails'
 end
  
+gem "twitter", "~> 4.8.1"
+gem "t", "~> 1.7.2"
+gem 'omniauth-twitter'
 
