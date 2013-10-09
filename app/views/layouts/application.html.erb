@@ -2,27 +2,44 @@
 <html>
 <head>
   <title>TweetsOnUs</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <link rel="stylesheet" media="screen" href="http://handsontable.com/dist/jquery.handsontable.full.css">
 </head>
 <body>
 
+  <div class="container">
+    <ul class="nav nav-tabs pull-left">
+      <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
+      <% if current_user.present? && current_user.role == "admin" %>
+      <li class="<%= 'active' if current_page?(welcome_admin_path) %>"><%= link_to "Admin", welcome_admin_path %></li>
+      <% end %>
+    </ul>
 
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, id: "flash_#{name}" %>
-  <% end %>
-
-  <div id="user_nav">
-    <% if current_user %>
-      Signed in as <%= current_user.name %>
-      <%= link_to "Sign out", signout_path %>
-    <% else %>
-      <%= link_to "Sign in with Twitter", "/auth/twitter"%>
-    <% end %>
+    <ul class="nav nav-tabs pull-right">
+      <% if current_user %>
+        <li><a href="https://twitter.com/#{current_user.name}"><%= current_user.name %></a></li>
+        <li><%= link_to "Sign out", signout_path %></li>
+      <% else %>
+        <li><%= link_to "Sign in with Twitter", "/auth/twitter"%></li>
+      <% end %>
+    </ul>
   </div>
 
-<%= yield %>
+  <div class="container">  
+    <% flash.each do |name, msg| %>
+      <div class="alert-info" data-alert="alert">
+      <a class="close" data-dismiss='alert' href="#">×</a>
+      <%= content_tag :div, msg, id: "flash_#{name}" %>
+    <% end %>
+    </div>  
+  </div>
+  
+  <%= yield %>
 
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <script src="http://handsontable.com/dist/jquery.handsontable.full.js"></script>
 </body>
+  
+
 </html>
