@@ -1,4 +1,7 @@
 TweetsOnUs::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -13,7 +16,7 @@ TweetsOnUs::Application.routes.draw do
     get 'signout', to: 'sessions#destroy', as: 'signout'
     root 'welcome#index'
 
-    get 'welcome/admin'
+    # get 'welcome/admin'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

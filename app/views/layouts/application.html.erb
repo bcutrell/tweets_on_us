@@ -11,7 +11,7 @@
     <ul class="nav nav-tabs pull-left">
       <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
       <% if current_user.present? && current_user.role == "admin" %>
-      <li class="<%= 'active' if current_page?(welcome_admin_path) %>"><%= link_to "Admin", welcome_admin_path %></li>
+        <li class="<%= 'active' if current_page?(rails_admin_path) %>"><%= link_to "Admin", rails_admin_path %></li>
       <% end %>
     </ul>
 
