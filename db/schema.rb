@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131009173150) do
+ActiveRecord::Schema.define(version: 20131010155430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "groups", force: true do |t|
+    t.string   "tag",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "rails_admin_histories", force: true do |t|
     t.text     "message"
@@ -28,6 +34,13 @@ ActiveRecord::Schema.define(version: 20131009173150) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
+
+  create_table "tweeter_groups", force: true do |t|
+    t.integer  "tweeter_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tweeters", force: true do |t|
     t.string   "handle",     null: false
