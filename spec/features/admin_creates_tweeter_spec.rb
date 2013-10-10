@@ -8,7 +8,7 @@ feature 'admin creates a tweeter', %Q{
 
   # Acceptance Criteria:
   # * Admin can add tweeters
-  # *Admin can remove tweeters
+  # * Admin can remove tweeters
 
 before (:each) do 
   @tweet = FactoryGirl.create(:tweeter) 
@@ -17,10 +17,7 @@ end
 
 let!(:user) {FactoryGirl.create(:administrator)}
 
-
   scenario 'admin successfully creates a tweeter' do
-    user = FactoryGirl.create(:administrator)
-
     login_with_oauth
     click_on 'Admin'
     within('.sidebar-nav') do
@@ -36,8 +33,6 @@ let!(:user) {FactoryGirl.create(:administrator)}
   end
 
   scenario 'admin fails to create a tweeter' do
-   user = FactoryGirl.create(:administrator)
-
     login_with_oauth
     click_on 'Admin'
     within('.sidebar-nav') do
@@ -51,8 +46,6 @@ let!(:user) {FactoryGirl.create(:administrator)}
   end
 
   scenario 'admin can\'t create the same tweeter twice' do 
-    user = FactoryGirl.create(:administrator)
-
     login_with_oauth
     click_link 'Admin'
     within('.sidebar-nav') do 
@@ -64,5 +57,17 @@ let!(:user) {FactoryGirl.create(:administrator)}
 
     expect(page).to have_content("Tweeter failed to be created")
     expect(Tweeter.count).to eql(@prev_count)
+  end
+
+  scenario 'admin can delete a tweeter' do 
+    login_with_oauth
+    click_link 'Admin'
+    within('.sidebar-nav') do 
+      page.click_link('Tweeters')
+    end
+    click_on 'Delete'
+    click_on 'Yes, I\'m sure'
+
+    expect(page).to have_content('Tweeter successfully deleted')
   end
 end
