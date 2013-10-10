@@ -12,13 +12,18 @@ feature 'user is set as an admin', %Q{
   # * Admin can create groups for types of tweeters (LA staff, launchers, other)
   # * Admin can set the dashboard feed
 
-  scenario 'user is set as admin' do
-    user = FactoryGirl.create(:user)
-    user.role = "admin"
-    expect(user.role).to eql("admin")
+  scenario 'admin can see special admin site' do
+    user = FactoryGirl.create(:administrator)
+    login_with_oauth
+    click_on 'Admin'
+    expect(page).to have_content('Site Administration')
   end
 
-  scenario 'admin adds tweeter'
+  scenario 'normal users cannot see admin site' do
+    user = FactoryGirl.create(:user)
+    login_with_oauth
+    expect(page).to_not have_content('Admin')
+  end
 
   scenario 'admin removes tweeter'
 
