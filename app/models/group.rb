@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
   has_many :tweeter_groups
 
   validates_presence_of :tag
+  validates_uniqueness_of :tag
 
 RailsAdmin.config {|c| c.label_methods << :tag}
 
