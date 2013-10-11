@@ -8,7 +8,7 @@ class TweeterWorker
       end_time = Date.today 
       tweet_time = Date.parse(timeline.created_at.to_s)
       # find or initialize by, like a seed file, deal with existing tweets
-      if tweet_time.between?(start_time, end_time)
+      if tweet_time.between?(start_time, end_time) && !Tweet.where(content: timeline.text).present?
         content = timeline.text
         tweet = Tweet.new(content: content, tweeter: tweeter)
         tweet.save
