@@ -7,16 +7,13 @@ class TweeterWorker
       start_time = Date.today - 7
       end_time = Date.today 
       tweet_time = Date.parse(timeline.created_at.to_s)
+      # find or initialize by, like a seed file, deal with existing tweets
       if tweet_time.between?(start_time, end_time)
         content = timeline.text
         tweet = Tweet.new(content: content, tweeter: tweeter)
         tweet.save
       end
     end
-
-    # find or initialize by, like a seed file, 
-    # content = Twitter.user(tweeter.handle).status.text
-    # tweet = Tweet.new(content: content, tweeter: tweeter)
   end
 
 end
