@@ -8,6 +8,7 @@ class Tweeter < ActiveRecord::Base
 
   validates_presence_of :handle
 
+
   def self.handles
     handles = []
     Tweeter.all.each do |tweeter|
@@ -22,5 +23,10 @@ class Tweeter < ActiveRecord::Base
       TweeterWorker.perform_async(tweeter.id)
     end
   end
+
+
+  validates_uniqueness_of :handle
+
+  RailsAdmin.config {|c| c.label_methods << :handle}
 
 end
