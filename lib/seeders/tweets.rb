@@ -1,25 +1,40 @@
 module Seeders
-  module Tweet
+  module Tweets
 
     class << self
 
       def seed
-        tweets.each do |tweet|
-          tweet = tweet.where(title: attributes[:title]).first
-          if tweet.nil?
-            tweet = tweet.new
-            tweet.content = 
-            tweet.tweeter = 
-
-          else
-            tweet.update_attributes(attributes)
+  
+        Tweeter.all.each do |tweeter|
+          tweet(tweeter.handle)
+          @tweets.each do |tweet|
+            if !Tweet.where(content: tweet).present?
+            message = Tweet.new(content: tweet, tweeter: tweeter)
+            message.save!
+            end
           end
-          tweet.save!
         end
       end
 
-      def tweets
+      def tweet(handle)
+        @tweets = []
+        fetch_all_tweets(handle).each do |tweet|
+          @tweets << tweet.text
+        end
+      end
 
+      def collect_with_max_id(collection=[], max_id=nil, &block)
+        response = yield max_id
+        collection += response
+        response.empty? ? collection.flatten : collect_with_max_id(collection, response.last.id - 1, &block)
+      end
+
+      def fetch_all_tweets(user)
+        collect_with_max_id do |max_id|
+          options = {:count => 200, :include_rts => true}
+          options[:max_id] = max_id unless max_id.nil?
+          Twitter.user_timeline(user, options)
+        end
       end
 
     end
