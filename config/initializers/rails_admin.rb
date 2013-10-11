@@ -14,6 +14,20 @@ RailsAdmin.config do |config|
   # RailsAdmin may need a way to know who the current user is]
   config.current_user_method { current_user } # auto-generated
 
+  config.model Group do
+     list do
+       field :tag
+       field :tweeters
+     end
+  end
+
+  config.model Tweeter do
+     list do
+       field :handle
+       field :groups
+     end
+  end
+
   # If you want to track changes on your models:
   # config.audit_with :history, 'User'
 
@@ -41,6 +55,9 @@ RailsAdmin.config do |config|
   # Each model configuration can alternatively:
   #   - stay here in a `config.model 'ModelName' do ... end` block
   #   - go in the model definition file in a `rails_admin do ... end` block
+ config.excluded_models << TweeterGroup
+
+
 
   # This is your choice to make:
   #   - This initializer is loaded once at startup (modifications will show up when restarting the application) but all RailsAdmin configuration would stay in one place.
