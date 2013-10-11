@@ -25,6 +25,6 @@ feature 'user is set as an admin', %Q{
     expect(page).to_not have_content('Admin')
   end
 
-  scenario 'admin removes tweeter'
-
+  # scenario 'admin removes tweeter'
+  
 end
