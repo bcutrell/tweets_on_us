@@ -57,6 +57,7 @@ group :test, :development do
   gem 'pry-rails'
 end
  
+gem 'sidekiq'
 gem "twitter", "~> 4.8.1"
 gem "t", "~> 1.7.2"
 gem 'omniauth-twitter'
@@ -64,6 +65,7 @@ gem "rails_admin", :git => "git://github.com/sferik/rails_admin.git"
 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :github => 'anjlab/bootstrap-rails'
+
 
 
 
