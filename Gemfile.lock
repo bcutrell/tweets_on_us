@@ -67,6 +67,7 @@ GEM
       xpath (~> 2.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    chartkick (1.2.0)
     coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -274,6 +275,7 @@ PLATFORMS
 DEPENDENCIES
   anjlab-bootstrap-rails!
   capybara
+  chartkick
   coffee-rails (~> 4.0.0)
   factory_girl
   factory_girl_rails
