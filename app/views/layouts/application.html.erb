@@ -2,8 +2,7 @@
 <html>
 <head>
   <title>TweetsOnUs</title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <link rel="stylesheet" media="screen" href="http://handsontable.com/dist/jquery.handsontable.full.css">
+  <%= stylesheet_link_tag "application", media: "all" %>
 </head>
 <body>
 
@@ -38,7 +37,8 @@
 
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <script src="http://handsontable.com/dist/jquery.handsontable.full.js"></script>
+
+  <%= yield :extra_footer %>
 </body>
   
 
