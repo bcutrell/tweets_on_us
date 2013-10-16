@@ -57,6 +57,7 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'valid_attribute'
   gem 'pry-rails'
+  gem "timecop", "~> 0.6.3"
 end
  
 gem 'sidekiq'

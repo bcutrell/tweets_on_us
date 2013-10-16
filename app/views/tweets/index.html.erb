@@ -1,1 +1,2 @@
-<%= pie_chart Tweet.group("content").count %>
+<%= pie_chart @tweets_from_today.group(:tweet_date).count %>
+
