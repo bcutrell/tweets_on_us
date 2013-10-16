@@ -24,9 +24,6 @@ class Tweeter < ActiveRecord::Base
     end
   end
 
-
-
-
 def collect_with_max_id(collection=[], max_id=nil, &block)
   response = yield max_id
   collection += response
@@ -41,9 +38,24 @@ def fetch_all_tweets(user)
   end
 end
 
-
   validates_uniqueness_of :handle
 
   RailsAdmin.config {|c| c.label_methods << :handle}
+
+    def handle_words   
+      handle_word_array = []
+      self.tweets.each do |tweet|
+        tweet.content.split(" ").each do |word|
+          handle_word_array << word 
+        end 
+      end
+      result = Hash.new(0)
+      handle_word_array.each { |word| result[word] += 1 }
+      return result
+    end
+
+    def cloud_word
+      
+    end
 
 end
