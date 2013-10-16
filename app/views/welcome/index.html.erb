@@ -1,7 +1,33 @@
+<% tweeter = Tweeter.first %> 
+
 <div class="hero">
-  <div class="container">
-    <div class="welcome_box">
-      <h1 class="text-center">Tweets On Us</h1>
+    <div class="select_box">
+      <select>
+        <% Tweeter.all.each do |tweeter| %>
+        <option value="volvo"><%= tweeter.handle %></option>
+        <% end %>
+      </select>
     </div>
-  </div>
+    <div class="white_box">
+      <div id="tweet_cloud" style="width: 550px; height: 350px;">
+      </div>
+    </div>
 </div>
+
+<% content_for :extra_footer do %>
+  <script>
+      var word_array = [];
+      "<% tweeter.handle_words.each do |word, value| %>"
+        word_array.push({text: "<%= word %>", weight: "<%= value %>"});
+      "<% end %>"
+
+
+      $(function() {
+        // When DOM is ready, select the container element and call the jQCloud method, passing the array of words as the first argument.
+        $("#tweet_cloud").jQCloud(word_array);
+      });
+  </script>
+<% end %>
+
+
+

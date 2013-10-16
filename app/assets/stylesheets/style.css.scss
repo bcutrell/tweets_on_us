@@ -1,11 +1,37 @@
 
 .hero
 {
-  background-image:url(http://gembells.com/img/2013/08/Twitter-Bird-Wallpapers.jpg);
+  background-image:url(http://img.wallpaperstock.net:81/twitter-bird-mosaic-wallpapers_17467_1440x900.jpg);
   min-height: 600px;
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
+
+.select_box
+{
+  margin-top: 25px;
+  margin-left: 230px
+}
+
+.white_box
+{
+  color: rgb(69, 85, 96);
+  margin-top: 20px;
+  text-align: center;
+  background: #FFFFFF;
+  top: 0;
+  width:600px;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.2),inset 0 0 50px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 0 4px rgba(0,0,0,0.2),inset 0 0 50px rgba(0,0,0,0.1);
+  box-shadow: 0 0 4px rgba(0,0,0,0.2),inset 0 0 50px rgba(0,0,0,0.1);
+}
+
 .nav
 {
   padding-top: 10px
@@ -13,7 +39,7 @@
 
 .welcome_box
 {
-  color:white
+  color:blue
 }
 
 .alert-info 
