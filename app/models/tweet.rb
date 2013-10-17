@@ -12,9 +12,13 @@ class Tweet < ActiveRecord::Base
     end
 
     def tweeter_tag
-      Tweet.all.each do |tweet|
-        tweet.tweeter
-      end
+      # tweeters = []
+      # Tweet.from_today.each do |tweet|
+      #   if !tweeters.include?(tweet.tweeter)
+      #     tweeters << tweet.tweeter
+      #   end
+      # end
+      
     end
 
     def time_range

@@ -11,6 +11,7 @@ TweetsOnUs::Application.routes.draw do
 
     # resources :welcome
     resources :tweets, only:[:index]
+    resources :groups, only:[:index]
     
     get '/auth/:provider/callback', to: 'sessions#create'
     get '/auth/invalid', to: 'sessions#invalid'
