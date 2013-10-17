@@ -4,12 +4,11 @@ module Seeders
     class << self
 
       def seed
-  
         Tweeter.all.each do |tweeter|
           tweet(tweeter.handle)
           @tweets.each do |tweet|
-            if !Tweet.where(content: tweet).present?
-            message = Tweet.new(content: tweet, tweeter: tweeter)
+            if !Tweet.where(content: tweet[:text]).present?
+            message = Tweet.new(content: tweet[:text], tweeter: tweeter, tweet_date: tweet[:created_at])
             message.save!
             end
           end
@@ -19,7 +18,7 @@ module Seeders
       def tweet(handle)
         @tweets = []
         fetch_all_tweets(handle).each do |tweet|
-          @tweets << tweet.text
+          @tweets << {text: tweet.text, created_at: tweet.created_at}
         end
       end
 
