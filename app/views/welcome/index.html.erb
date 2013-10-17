@@ -15,19 +15,22 @@
 </div>
 
 <% content_for :extra_footer do %>
-  <script>
-      var word_array = [];
-      "<% tweeter.handle_words.each do |word, value| %>"
-        word_array.push({text: "<%= word %>", weight: "<%= value %>"});
-      "<% end %>"
+  <% if tweeter.present? %>
+    <script>
+        var word_array = [];
+        "<% tweeter.handle_words.each do |word, value| %>"
+          word_array.push({text: "<%= word %>", weight: "<%= value %>"});
+        "<% end %>"
 
 
-      $(function() {
-        // When DOM is ready, select the container element and call the jQCloud method, passing the array of words as the first argument.
-        $("#tweet_cloud").jQCloud(word_array);
-      });
-  </script>
+        $(function() {
+          // When DOM is ready, select the container element and call the jQCloud method, passing the array of words as the first argument.
+          $("#tweet_cloud").jQCloud(word_array);
+        });
+    </script>
+  <% end %>
 <% end %>
+
 
 
 
