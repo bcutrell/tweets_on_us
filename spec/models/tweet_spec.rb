@@ -14,7 +14,6 @@ describe Tweet do
       expect(Tweet.from_today).to include(tweet_from_today)
       expect(Tweet.from_today).to_not include(tweet_from_yesterday)
     end
-    
 
   end
 end

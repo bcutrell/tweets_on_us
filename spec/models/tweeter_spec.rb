@@ -16,14 +16,18 @@ describe Tweeter do
       it 'creates an array of words from a tweet of a given handle' do
         tweeter = FactoryGirl.create(:tweeter, :with_tweet)
         tweet = tweeter.tweets.first.content.split(" ")
-        expect(tweeter.handle_words).to eql(tweet)
+
+        result = Hash.new(0)
+        tweet.each { |word| result[word] += 1 }
+
+        expect(tweeter.handle_words).to eql(result)
       end
 
       it 'creates an array of words from all of the tweets of a given handle' do
         tweeter = FactoryGirl.create(:tweeter, :with_tweet)
         new_tweet = FactoryGirl.create(:tweet, content: "Kim Kardashian is so last year")
         tweeter.tweets << new_tweet
-        expect(tweeter.handle_words.class).to eql(Array)
+        expect(tweeter.handle_words.class).to eql(Hash)
       end
     end
 
