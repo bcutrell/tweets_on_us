@@ -9,6 +9,10 @@ gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+gem 'bootstrap-sass', '~> 2.3.2.1'
+
+gem "font-awesome-rails"
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -46,7 +50,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
- 
+
 group :test, :development do
   gem 'capybara'
   gem 'factory_girl'
@@ -59,17 +63,11 @@ group :test, :development do
   gem 'pry-rails'
   gem "timecop", "~> 0.6.3"
 end
- 
+
 gem 'sidekiq'
 gem "twitter", "~> 4.8.1"
 gem "t", "~> 1.7.2"
 gem 'omniauth-twitter'
 gem "rails_admin", :git => "git://github.com/sferik/rails_admin.git"
 gem 'chartkick'
-
-gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
-                              :github => 'anjlab/bootstrap-rails'
-
-
-
 

@@ -1,22 +1,85 @@
-<% tweeter = Tweeter.first %> 
+<% if @tweeter.present? %>
+  <% tweeter = @tweeter %>
+<% end %>
 
-<div class="hero">
-    <div class="select_box">
-      <select>
-        <% Tweeter.all.each do |tweeter| %>
-        <option value="volvo"><%= tweeter.handle %></option>
+<div class="hero box_one">
+  <div class="container">
+    <div align="center">
+      <div class="row center">
+
+        <div class="span4 pull-left">
+          <h1>Groups</h1>
+        <%= form_tag("/", method: "get") do %>
+        <%= collection_select(:tag, :group_id, Group.all, :id, :tag) %>
+        <br>
+        <%= submit_tag("Submit", class: "btn") %>
         <% end %>
-      </select>
+        </div>
+
+        <div class="span4 pull-right">
+          <h1>Handles</h1>
+          <%= form_tag("/", method: "get") do %>
+          <%= collection_select(:handle, :tweeter_id, Tweeter.all, :id, :handle, {selected: tweeter.id}) %>
+        <br>
+        <%= submit_tag("Submit", class: "btn") %>
+        <% end %>
+        </div>
+      </div>
+
     </div>
-    <div class="white_box">
+    <div class="tweet_table">
+      <table class="table table-bordered table-striped">
+      <thead>
+        <tr class="tweet_header">
+          <th>Handle</th>
+          <th>Tweet</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+
+      <% Tweet.all.each do |tweet| %>
+      <tbody>
+        <tr>
+          <td><%= "@#{tweet.tweeter.handle}" %></td>
+          <td><%= tweet.content %><a href="#" class="retweet"><i class="icon-retweet"></i></a></td>
+          <td><%= tweet.tweet_date %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+    </div>
+  </div>
+</div>
+
+<div class="hero box_two">
+  <div class="container">
+    <div align="center">
+    <h1>@<%= "#{tweeter.handle}" %></h1>
+    </div>
+    <div class="white_box center">
       <div id="tweet_cloud" style="width: 550px; height: 350px;">
       </div>
     </div>
+    </div>
 </div>
+
+<div class="hero box_three">
+  <div class="container">
+        <div align="center">
+    <h1>@<%= "#{tweeter.handle}" %></h1>
+    </div>
+      <div class="pie_chart center">
+    <%= pie_chart @group_tweets %>
+      </div>
+  </div>
+</div>
+
+
 
 <% content_for :extra_footer do %>
   <% if tweeter.present? %>
     <script>
+
         var word_array = [];
         "<% tweeter.handle_words.each do |word, value| %>"
           word_array.push({text: "<%= word %>", weight: "<%= value %>"});
@@ -30,6 +93,8 @@
     </script>
   <% end %>
 <% end %>
+
+
 
 
 

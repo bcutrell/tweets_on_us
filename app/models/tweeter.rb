@@ -4,10 +4,9 @@ class Tweeter < ActiveRecord::Base
 
   has_many :tweeter_groups
 
-  has_many :tweets 
+  has_many :tweets
 
   validates_presence_of :handle
-
 
   def self.handles
     handles = []
@@ -42,12 +41,12 @@ end
 
   RailsAdmin.config {|c| c.label_methods << :handle}
 
-    def handle_words   
+    def handle_words
       handle_word_array = []
       self.tweets.each do |tweet|
         tweet.content.split(" ").each do |word|
-          handle_word_array << word 
-        end 
+          handle_word_array << word
+        end
       end
       result = Hash.new(0)
       handle_word_array.each { |word| result[word] += 1 }
@@ -55,7 +54,7 @@ end
     end
 
     def cloud_word
-      
+
     end
 
 end
