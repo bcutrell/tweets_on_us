@@ -1,6 +1,3 @@
-<% if @tweeter.present? %>
-  <% tweeter = @tweeter %>
-<% end %>
 
 <div class="hero box_one">
   <div class="container">
@@ -10,7 +7,7 @@
         <div class="span4 pull-left">
           <h1>Groups</h1>
         <%= form_tag("/", method: "get") do %>
-        <%= collection_select(:tag, :group_id, Group.all, :id, :tag) %>
+        <%= collection_select(:tag, :group_id, Group.all, :id, :tag, {selected: nil}) %>
         <br>
         <%= submit_tag("Submit", class: "btn") %>
         <% end %>
@@ -19,7 +16,7 @@
         <div class="span4 pull-right">
           <h1>Handles</h1>
           <%= form_tag("/", method: "get") do %>
-          <%= collection_select(:handle, :tweeter_id, Tweeter.all, :id, :handle, {selected: tweeter.id}) %>
+          <%= collection_select(:handle, :tweeter_id, Tweeter.all, :id, :handle, {selected: @tweeter.id}) %>
         <br>
         <%= submit_tag("Submit", class: "btn") %>
         <% end %>
@@ -37,7 +34,8 @@
         </tr>
       </thead>
 
-      <% Tweet.all.each do |tweet| %>
+
+      <% @tweeter.tweets.each do |tweet| %>
       <tbody>
         <tr>
           <td><%= "@#{tweet.tweeter.handle}" %></td>
@@ -54,7 +52,7 @@
 <div class="hero box_two">
   <div class="container">
     <div align="center">
-    <h1>@<%= "#{tweeter.handle}" %></h1>
+    <h1>@<%= "#{@tweeter.handle}" %></h1>
     </div>
     <div class="white_box center">
       <div id="tweet_cloud" style="width: 550px; height: 350px;">
@@ -66,7 +64,7 @@
 <div class="hero box_three">
   <div class="container">
         <div align="center">
-    <h1>@<%= "#{tweeter.handle}" %></h1>
+    <h1>@<%= "#{@tweeter.handle}" %></h1>
     </div>
       <div class="pie_chart center">
     <%= pie_chart @group_tweets %>
@@ -77,11 +75,11 @@
 
 
 <% content_for :extra_footer do %>
-  <% if tweeter.present? %>
+  <% if @tweeter.present? %>
     <script>
 
         var word_array = [];
-        "<% tweeter.handle_words.each do |word, value| %>"
+        "<% @tweeter.handle_words.each do |word, value| %>"
           word_array.push({text: "<%= word %>", weight: "<%= value %>"});
         "<% end %>"
 
