@@ -1,36 +1,35 @@
-<% tweeter = Tweeter.first %> 
 
-<div class="hero">
-    <div class="select_box">
-      <select>
-        <% Tweeter.all.each do |tweeter| %>
-        <option value="volvo"><%= tweeter.handle %></option>
-        <% end %>
-      </select>
-    </div>
-    <div class="white_box">
-      <div id="tweet_cloud" style="width: 550px; height: 350px;">
+      <% if @tweeter.present? %>
+        <%= render 'tweet_handle_stats', local: {tweeter: @tweeter}  %>
+      <% elsif @group.present? %>
+        <%= render 'tweet_group_stats', local: {group: @group}  %>
+      <% else %>
+
+  <div class="hero box_one">
+    <div class="container">
+      <div align="center">
+        <div class="row center">
+          <h1 align="center"> Select a group or handle </h1>
+          <div class="span4 pull-left">
+            <h2>Groups</h2>
+          <%= form_tag("/", method: "get") do %>
+          <%= collection_select(:tag, :group_id, Group.all, :id, :tag, {selected: nil}) %>
+          <br>
+          <%= submit_tag("Update Group", class: "btn group_submit") %>
+          <% end %>
+          </div>
+
+          <div class="span4 pull-right">
+            <h2>Handles</h2>
+              <%= form_tag("/", method: "get") do %>
+              <%= collection_select(:handle, :tweeter_id, Tweeter.all, :id, :handle) %>
+            <br>
+            <%= submit_tag("Update Handle", class: "btn handle_submit") %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
-</div>
+  </div>
 
-<% content_for :extra_footer do %>
-  <% if tweeter.present? %>
-    <script>
-        var word_array = [];
-        "<% tweeter.handle_words.each do |word, value| %>"
-          word_array.push({text: "<%= word %>", weight: "<%= value %>"});
-        "<% end %>"
-
-
-        $(function() {
-          // When DOM is ready, select the container element and call the jQCloud method, passing the array of words as the first argument.
-          $("#tweet_cloud").jQCloud(word_array);
-        });
-    </script>
-  <% end %>
 <% end %>
-
-
-
-

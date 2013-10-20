@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/anjlab/bootstrap-rails.git
-  revision: 24e9ee8edfb0b810fb2ba4f33169773b49c6fb83
-  specs:
-    anjlab-bootstrap-rails (3.0.0.3)
-      railties (>= 3.0)
-      sass (>= 3.2)
-
-GIT
   remote: git://github.com/sferik/rails_admin.git
   revision: 4e2ef25dc8b0fe2519b8fc459174d927b57459a7
   specs:
@@ -274,12 +266,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  anjlab-bootstrap-rails!
+  bootstrap-sass (~> 2.3.2.1)
   capybara
   chartkick
   coffee-rails (~> 4.0.0)
   factory_girl
   factory_girl_rails
+  font-awesome-rails
   jbuilder (~> 1.2)
   jqcloud-rails
   jquery-rails

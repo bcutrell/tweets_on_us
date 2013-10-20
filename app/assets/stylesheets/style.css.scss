@@ -1,25 +1,64 @@
+@import "bootstrap";
+@import "font-awesome";
+
+.center
+{
+  margin-right: auto;
+  margin-left: auto;
+  float: none
+}
 
 .hero
 {
-  background-image:url(http://img.wallpaperstock.net:81/twitter-bird-mosaic-wallpapers_17467_1440x900.jpg);
+
   min-height: 600px;
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 
-.select_box
+.box_one
 {
-  margin-top: 25px;
-  margin-left: 230px
+  background-color: #3CBAC8
+}
+
+.box_two
+{
+  background-color: #93EDD4
+}
+
+.box_three
+{
+  background-color: #F3F5C4
+}
+
+.box_four
+{
+  background-color: #F9CB8F
+}
+
+.box_five
+{
+  background-color: #F19181
+}
+
+.tweet_table {
+height:350px;
+margin-bottom: 125px;
+overflow:auto;
+}
+
+.tweet_header
+{
+  background-color: white
 }
 
 .white_box
 {
   color: rgb(69, 85, 96);
-  margin-top: 20px;
   text-align: center;
   background: #FFFFFF;
   top: 0;
+  margin-bottom: 125px;
   width:600px;
   border: 1px solid #ccc;
   -webkit-border-radius: 6px;
@@ -34,7 +73,9 @@
 
 .nav
 {
-  padding-top: 10px
+  padding-top: 10px;
+  margin-bottom: 0;
+  padding-bottom:  0;
 }
 
 .welcome_box
@@ -42,10 +83,21 @@
   color:blue
 }
 
-.alert-info 
+.pie_chart
 {
-  padding:15px; 
-  margin:10px
+  margin-bottom: 125px;
+  width:550px
+}
+
+.alert-info
+{
+  padding:15px;
+}
+
+.retweet i
+{
+    margin-left: 10px;
+    text-decoration: none
 }
 
 .admin_sheet
