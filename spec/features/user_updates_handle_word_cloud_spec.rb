@@ -15,9 +15,9 @@ So that I can filter by handle
     login_with_oauth
 
     select(tweeter.handle, :from => 'handle[tweeter_id]')
-    click_on 'Submit'
+    click_on "Update Handle"
 
-    page.has_content?('')
+    page.has_css?('.jqCloud')
   end
 end
 

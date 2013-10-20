@@ -24,4 +24,12 @@ RailsAdmin.config {|c| c.label_methods << :tag}
     group_tweet_count
   end
 
+  def self.tag_check(params)
+    if params[:tag].present?
+      @group = Group.where(id: params[:tag][:group_id]).first
+    else
+      nil
+    end
+  end
+
 end

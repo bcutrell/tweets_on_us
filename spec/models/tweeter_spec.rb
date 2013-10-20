@@ -10,13 +10,12 @@ describe Tweeter do
     tweeter = FactoryGirl.create(:tweeter)
     expect(Tweeter.handles.class).to eql(Array)
     expect(Tweeter.handles).to eql([tweeter.handle])
-  end 
+  end
 
-    describe '#handle_words' do 
+    describe '#handle_words' do
       it 'creates an array of words from a tweet of a given handle' do
         tweeter = FactoryGirl.create(:tweeter, :with_tweet)
         tweet = tweeter.tweets.first.content.split(" ")
-
         result = Hash.new(0)
         tweet.each { |word| result[word] += 1 }
 
@@ -31,14 +30,20 @@ describe Tweeter do
       end
     end
 
-    # describe '#cloud_arrar' do
-    #   it 'should count all the numbers of words' do
-    #     tweeter = FactoryGirl.create(:tweeter, :with_tweet)
-    #     expect(tweeter.word_count).to eql(
-    #       {text: "Nice", weight:1},
-    #       {text: "Tweet", weight:1},
-    #       {text: "Today", weight:1})
-    #   end
-    # end
+    describe '#handle_check' do
+      it 'returns a string if no tweeter has been selected' do
+        params = {}
+        params[:handle] = nil
+        expect(Tweeter.handle_check(params)).to eql(nil)
+      end
+
+      it 'returns the tweeter handle if a tweeter has been selected' do
+        params = {}
+        tweeter = FactoryGirl.create(:tweeter, :with_tweet)
+        params[:handle] = {}
+        params[:handle][:tweeter_id] = tweeter.id
+        expect(Tweeter.handle_check(params)).to eql(tweeter)
+      end
+    end
 
 end
