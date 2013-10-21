@@ -31,9 +31,9 @@ Next steps:
 - Develop regex for the word cloud to account for links and common words
 - Build some graphs using d3
 
-Note
+Heroku Note
 ---
-This application requires admin supplied user and groups, if you do not have admin rights you will not be able to add groups or handles
+This application requires admin supplied users and groups, if you do not have admin rights you will not be able to add groups or handles
 
 
 
